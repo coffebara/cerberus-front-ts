@@ -89,3 +89,14 @@
 
   cursor: pointer;
 }
+
+.google-sign-in-button {
+  width: 56px;
+  height: 56px;
+  
+  background-position: 50%, 50%;
+  background-size: 100%, 100%;
+  background-image: url(assets/images/google-sign-in.png);
+
+  cursor: pointer;
+}

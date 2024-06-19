@@ -73,6 +73,18 @@ export default function SignUp() {
 
     };
 
+    const OnSnsKakaoClickHandler = () => {
+        window.location.href = "http://localhost:9000/oauth2/authorization/kakao"
+    }
+    const OnSnsNaverClickHandler = () => {
+        window.location.href = "http://localhost:9000/oauth2/authorization/naver"
+    }
+    const OnSnsGoogleClickHandler = () => {
+        window.location.href = "http://localhost:9000/oauth2/authorization/googke"
+    }
+
+    
+
     const onIdKeyDownHandler = (event: KeyboardEvent<HTMLInputElement>) => {
         if (event.key !== 'Enter') return; // Enter 키가 아니면 종료
         OnIdButtonClickHandler();
@@ -102,13 +114,14 @@ export default function SignUp() {
             <div className="sign-up-image"></div>
             <div className="sign-up-container">
                 <div className="sign-up-box">
-                    <div className="sign-up-title">{"오늘 산책 완료"}</div>
+                    <div className="sign-up-title">{"오늘 산책 완료 !"}</div>
                     <div className="sign-up-content-box">
                         <div className="sign-up-content-sns-sign-in-box">
                             <div className="sign-up-content-sns-sign-in-title">{'SNS 로그인'}</div>
                             <div className="sign-up-content-sns-sign-in-button-box">
-                                <div className="kakao-sign-in-button"></div>
-                                <div className="naver-sign-in-button"></div>
+                                <div className="kakao-sign-in-button" onClick={OnSnsKakaoClickHandler}></div>
+                                <div className="naver-sign-in-button" onClick={OnSnsNaverClickHandler}></div>
+                                <div className="google-sign-in-button" onClick={OnSnsGoogleClickHandler}></div>
                             </div>
                         </div>
                         <div className="sign-up-content-divider"></div>
