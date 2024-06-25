@@ -2,6 +2,7 @@ import IdCheckResponseDto from "./id-check.response.dto"
 import EmailCertificationResponseDto from './email-certification.response.dto';
 import CheckCertificationResponseDto from './checkCertificationResponseDto';
 import SignUpResponseDto from './sign-up.response.dto';
+import SignInResponseDto from './sign-in.response.dto';
 
 
 export type {
@@ -9,4 +10,5 @@ export type {
     EmailCertificationResponseDto,
     CheckCertificationResponseDto,
     SignUpResponseDto,
+    SignInResponseDto,
 }

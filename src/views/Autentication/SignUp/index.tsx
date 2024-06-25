@@ -3,7 +3,7 @@ import { ChangeEvent, useRef, useState, KeyboardEvent } from "react";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
 import { CheckCertificationRequestDto, EmailCertificationRequestDto, IdCheckRequestDto, SignUpRequestDto } from "../../../apis/request/auth";
-import { checkCertificationRequest, email_certificationRequest, idCheckRequest, signUpRequest } from "../../../apis";
+import { SNS_SIGN_IN_URL, checkCertificationRequest, email_certificationRequest, idCheckRequest, signUpRequest } from "../../../apis";
 import { CheckCertificationResponseDto, EmailCertificationResponseDto, IdCheckResponseDto } from './../../../apis/response/auth';
 import { ResponseCode } from "../../../types/enum";
 import { ResponseBody } from "../../../types";
@@ -225,17 +225,10 @@ export default function SignUp() {
         navigate('auth/sign-in');
     };
 
-    const onSnsKakaoClickHandler = () => {
-        window.location.href = "http://localhost:9000/oauth2/authorization/kakao"
-    };
-    const onSnsNaverClickHandler = () => {
-        window.location.href = "http://localhost:9000/oauth2/authorization/naver"
-    };
-    const onSnsGoogleClickHandler = () => {
-        window.location.href = "http://localhost:9000/oauth2/authorization/googke"
-    };
+    const onSnsSignInButtonClickHandler = (type: 'kakao'| 'naver' | 'google') => {
+        window.location.href = SNS_SIGN_IN_URL(type);
+    }
 
-    
 
     const onIdKeyDownHandler = (event: KeyboardEvent<HTMLInputElement>) => {
         if (event.key !== 'Enter') return; // Enter 키가 아니면 종료
@@ -269,11 +262,11 @@ export default function SignUp() {
                     <div className="sign-up-title">{"오늘 산책 완료 !"}</div>
                     <div className="sign-up-content-box">
                         <div className="sign-up-content-sns-sign-in-box">
-                            <div className="sign-up-content-sns-sign-in-title">{'SNS 로그인'}</div>
+                            <div className="sign-up-content-sns-sign-in-title">{'SNS 회원가입'}</div>
                             <div className="sign-up-content-sns-sign-in-button-box">
-                                <div className="kakao-sign-in-button" onClick={onSnsKakaoClickHandler}></div>
-                                <div className="naver-sign-in-button" onClick={onSnsNaverClickHandler}></div>
-                                <div className="google-sign-in-button" onClick={onSnsGoogleClickHandler}></div>
+                                <div className="kakao-sign-in-button" onClick={() => onSnsSignInButtonClickHandler('kakao')}></div>
+                                <div className="naver-sign-in-button" onClick={() => onSnsSignInButtonClickHandler('naver')}></div>
+                                <div className="google-sign-in-button" onClick={() => onSnsSignInButtonClickHandler('google')}></div>
                             </div>
                         </div>
                         <div className="sign-up-content-divider"></div>
